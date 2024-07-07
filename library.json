@@ -1,0 +1,18 @@
+{
+  "name": "IRRemoteESP32",
+  "version": "1.0.0",
+  "description": "Library for receiving and decoding IR signals using an Arduino-ESP32 >= 3.2",
+  "keywords": ["IR", "remote", "signal", "decode", "ESP32"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vvs551/IRRemoteESP32.git"
+  },
+  "authors": [
+    {
+      "name": "vvs551",
+      "email": "vvs551@gmail.com"
+    }
+  ],
+  "frameworks": "arduino",
+  "platforms": "espressif32"
+}

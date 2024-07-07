@@ -1,6 +1,6 @@
-#include <IRRemote.h>
+#include <IRRemoteESP32.h>
 
-IRRemote irRemote;
+IRRemoteESP32 irRemote;
 
 void setup() {
     Serial.begin(115200);

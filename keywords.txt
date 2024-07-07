@@ -1,2 +1,2 @@
-IRRemote    KEYWORD1
-checkRemote KEYWORD2
+IRRemoteESP32   KEYWORD1
+checkRemote 	KEYWORD2

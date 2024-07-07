@@ -1,13 +1,13 @@
-#ifndef IRREMOTE_H
-#define IRREMOTE_H
+#ifndef IRREMOTE_ESP32_H
+#define IRREMOTE_ESP32_H
 
 #include "Arduino.h"
 #include <vector>
 
-class IRRemote {
+class IRRemoteESP32 {
 public:
-    IRRemote(uint8_t irPin = 10);
-    ~IRRemote();
+    IRRemoteESP32(uint8_t irPin = 10);
+    ~IRRemoteESP32();
     int checkRemote();
 
 private:
@@ -38,4 +38,4 @@ private:
     static const int ir_button[20];
 };
 
-#endif // IRREMOTE_H
+#endif // IRREMOTE_ESP32_H

@@ -1,21 +1,21 @@
-#include "IRRemote.h"
+#include "IRRemoteESP32.h"
 
 // Static member initialization
-DRAM_ATTR int16_t IRRemote::ir_cmd_a = -1;
-DRAM_ATTR int16_t IRRemote::ir_cmd_b = -1;
-DRAM_ATTR int16_t IRRemote::ir_adr_a = 0;
-DRAM_ATTR int16_t IRRemote::ir_adr_b = 0;
-uint8_t IRRemote::ir_rc = 0;
-uint8_t IRRemote::ir_addressCode = 0;
-uint8_t IRRemote::g_ir_pin = 0;
-uint32_t IRRemote::ir_intval_l = 0;
-uint32_t IRRemote::ir_intval_h = 0;
-int16_t IRRemote::ir_pulsecounter = 0;
-bool IRRemote::m_f_error = false;
+DRAM_ATTR int16_t IRRemoteESP32::ir_cmd_a = -1;
+DRAM_ATTR int16_t IRRemoteESP32::ir_cmd_b = -1;
+DRAM_ATTR int16_t IRRemoteESP32::ir_adr_a = 0;
+DRAM_ATTR int16_t IRRemoteESP32::ir_adr_b = 0;
+uint8_t IRRemoteESP32::ir_rc = 0;
+uint8_t IRRemoteESP32::ir_addressCode = 0;
+uint8_t IRRemoteESP32::g_ir_pin = 0;
+uint32_t IRRemoteESP32::ir_intval_l = 0;
+uint32_t IRRemoteESP32::ir_intval_h = 0;
+int16_t IRRemoteESP32::ir_pulsecounter = 0;
+bool IRRemoteESP32::m_f_error = false;
 
-const int IRRemote::ir_button[20] = {0x19, 0x45, 0x46, 0x47, 0x44, 0x40, 0x43, 0x07, 0x15, 0x09, 0x16, 0x0d, 0x1c, 0x18, 0x5a, 0x52, 0x08, 0x00, 0x00, 0x00};
+const int IRRemoteESP32::ir_button[20] = {0x19, 0x45, 0x46, 0x47, 0x44, 0x40, 0x43, 0x07, 0x15, 0x09, 0x16, 0x0d, 0x1c, 0x18, 0x5a, 0x52, 0x08, 0x00, 0x00, 0x00};
 
-IRRemote::IRRemote(uint8_t irPin) : m_ir_pin(irPin), m_t0(0), m_ir_num(0), m_key(-1) {
+IRRemoteESP32::IRRemoteESP32(uint8_t irPin) : m_ir_pin(irPin), m_t0(0), m_ir_num(0), m_key(-1) {
     memset(m_ir_resultstr, 0, sizeof(m_ir_resultstr));
 
     Serial.begin(115200);
@@ -28,17 +28,17 @@ IRRemote::IRRemote(uint8_t irPin) : m_ir_pin(irPin), m_t0(0), m_ir_num(0), m_key
     if (m_ir_pin >= 0) {
         g_ir_pin = m_ir_pin;
         pinMode(m_ir_pin, INPUT_PULLUP);
-        attachInterrupt(m_ir_pin, IRRemote::isr_IR, CHANGE);
+        attachInterrupt(m_ir_pin, IRRemoteESP32::isr_IR, CHANGE);
     }
 }
 
-IRRemote::~IRRemote() {
+IRRemoteESP32::~IRRemoteESP32() {
     if (m_ir_pin >= 0) {
         detachInterrupt(m_ir_pin);
     }
 }
 
-int IRRemote::checkRemote() {
+int IRRemoteESP32::checkRemote() {
     int button = -1;
     if (ir_cmd_a != -01) {
         if (ir_cmd_a + ir_cmd_b == 0xFF) {
@@ -49,7 +49,7 @@ int IRRemote::checkRemote() {
     return button;
 }
 
-void IRAM_ATTR IRRemote::isr_IR() {
+void IRAM_ATTR IRRemoteESP32::isr_IR() {
     uint16_t userCode = 0;
     uint16_t dataCode = 0;
     int32_t t1=0, intval_h=0, intval_l = 0;
@@ -150,25 +150,25 @@ void IRAM_ATTR IRRemote::isr_IR() {
     if(intval_l) error(intval_l, intval_h, pulsecounter);
 }
 
-void IRRemote::error(uint32_t intval_l, uint32_t intval_h, uint8_t pulsecounter) {
+void IRRemoteESP32::error(uint32_t intval_l, uint32_t intval_h, uint8_t pulsecounter) {
     ir_intval_l = intval_l;
     ir_intval_h = intval_h;
     ir_pulsecounter = pulsecounter;
     m_f_error = true;
 }
 
-void IRRemote::setIRresult(uint8_t userCode_a, uint8_t userCode_b, uint8_t dataCode_a, uint8_t dataCode_b) {
+void IRRemoteESP32::setIRresult(uint8_t userCode_a, uint8_t userCode_b, uint8_t dataCode_a, uint8_t dataCode_b) {
     ir_cmd_a = dataCode_a;
     ir_cmd_b = dataCode_b;
     ir_adr_a = userCode_a;
     ir_adr_b = userCode_b;
 }
 
-void IRRemote::rcCounter(uint8_t rc) {
+void IRRemoteESP32::rcCounter(uint8_t rc) {
     ir_rc = rc;
 }
 
-int IRRemote::getButton(uint16_t ir_cmd) {
+int IRRemoteESP32::getButton(uint16_t ir_cmd) {
     int n = sizeof(ir_button) / sizeof(ir_button[0]);
     int targetIndex = 0;
     for (auto b : ir_button){

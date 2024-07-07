@@ -1,4 +1,4 @@
-# IRRemote
+# IRRemoteESP32
 
 Library for receiving and decoding IR signals using an ESP32.
 It supports Arduino-ESP32 >= 3.2 !
@@ -37,9 +37,9 @@ LEFT            16
 ## Example
 
 ```cpp
-#include <IRRemote.h>
+#include <IRRemoteESP32.h>
 
-IRRemote irRemote;
+IRRemoteESP32 irRemote;
 
 void setup() {
     Serial.begin(115200);
