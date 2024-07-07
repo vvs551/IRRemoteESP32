@@ -4,7 +4,7 @@ IRRemoteESP32 irRemote;
 
 void setup() {
     Serial.begin(115200);
-    irRemote = IRRemote();
+    irRemote = IRRemoteESP32();
 }
 
 void loop() {
