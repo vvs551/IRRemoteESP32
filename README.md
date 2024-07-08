@@ -16,23 +16,23 @@ The library uses IR Remote for Arduino
 Returned codes:
 
 Button         Code
-0               0
-1               1
-2               2
-3               3
-4               4
-5               5
-6               6
-7               7
-8               8
-9               9
-*               10
-#               11
-OK              12
-UP              13
-RIGTH           14
-DOWN            15
-LEFT            16
+0       -       0
+1       -       1
+2       -       2
+3       -       3
+4       -       4
+5       -       5
+6       -       6
+7       -       7
+8       -       8
+9       -       9
+\*      -       10
+\#      -       11
+OK      -       12
+UP      -       13
+RIGTH   -       14
+DOWN    -       15
+LEFT    -       16
 
 ## Example
 
