@@ -6,7 +6,7 @@ It supports Arduino-ESP32 >= 3.02 based on ESP-IDF v5.1.4+!
 ## Installation
 
 1. Download the library.
-2. Unzip and place the `IRRemote` folder in your `Arduino/libraries` directory.
+2. Unzip and place the `IRRemoteESP32` folder in your `Arduino/libraries` directory.
 3. Restart the Arduino ID
 
 ## Usage
@@ -43,7 +43,7 @@ IRRemoteESP32 irRemote;
 
 void setup() {
     Serial.begin(115200);
-    irRemote = IRRemote();
+    irRemote = IRRemoteESP32();
 }
 
 void loop() {
