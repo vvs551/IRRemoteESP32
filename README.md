@@ -1,7 +1,7 @@
 # IRRemoteESP32
 
 Library for receiving and decoding IR signals using an ESP32.
-It supports Arduino-ESP32 >= 3.2 !
+It supports Arduino-ESP32 >= 3.02 based on ESP-IDF v5.1.4+!
 
 ## Installation
 
