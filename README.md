@@ -14,9 +14,9 @@ It supports Arduino-ESP32 >= 3.02 based on ESP-IDF v5.1.4+!<BR>
 
 The library uses IR Remote for Arduino
 
-Returned codes:
+### Returned codes
 
-Button  -      Code:
+<B>Button  -      Code:</b><BR>
 0       -       0;
 1       -       1;
 2       -       2;
@@ -55,7 +55,8 @@ void loop() {
     delay(100);
 }
 
-## Based
-The library based on the code of
+```
+#### Based
+The library based on the ideas of
 https://github.com/schreibfaul1/ESP32-IR-Remote-Cont
 
